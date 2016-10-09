@@ -51,7 +51,7 @@ function retract(strToken, retainWord) {
 function main() {
     let strToken = "";
     const retainWord = ["int", "if", "else", "return", "main", "void", "while", "break"];
-    let inputString = "int main(){int a=1;int b=2;int sum=a+b;}";
+    let inputString = "int main(){int a = 1;int b = 2;int sum = a + b;}";
     const stringArray = inputString.split("");
     for (let i = 0; i < stringArray.length; i++) {
         let char = stringArray[i].charCodeAt();
@@ -61,12 +61,12 @@ function main() {
                     strToken=strToken.concat(stringArray[i]);
                 }
             } else if (isDigit(char)) {
-                strToken=strToken.concat(stringArray[i]);
+                strToken.concat(stringArray[i]);
             } else if (char == 61) {
-                if ((strToken.length != 0 ) && (strToken.charAt(0) == '=')) {
-                    strToken= strToken.concat(stringArray[i]);
+                if ((strToken.length != 0 ) && (strToken.charAt(0) === '=')) {
+                    strToken.concat(stringArray[i]);
                     console.log("('" + 4 + "','" + strToken + "')");
-                    strToken=strToken.replace(strToken, '');
+                    strToken.replace(strToken, '');
                 } else {
                     strToken.concat(stringArray[i]);
                 }
@@ -85,24 +85,31 @@ function main() {
             } else if (stringArray[i] == ';') {
                 retract(strToken, retainWord);
                 console.log("('" + 5 + "','" + stringArray[i] + "')");
+                strToken = "";
             } else if (stringArray[i] == '(') {
                 retract(strToken, retainWord);
                 console.log("('" + 5 + "','" + stringArray[i] + "')");
+                strToken = "";
             } else if (stringArray[i] == ')') {
                 retract(strToken, retainWord);
                 console.log("('" + 5 + "','" + stringArray[i] + "')");
+                strToken = "";
             } else if (stringArray[i] == '{') {
                 retract(strToken, retainWord);
                 console.log("('" + 5 + "','" + stringArray[i] + "')");
+                strToken = "";
             } else if (stringArray[i] == '}') {
                 retract(strToken, retainWord);
                 console.log("('" + 5 + "','" + stringArray[i] + "')");
+                strToken = "";
             } else if (stringArray[i] == ',') {
                 retract(strToken, retainWord);
                 console.log("('" + 5 + "','" + stringArray[i] + "')");
+                strToken = "";
             }
         } else {
             retract(strToken, retainWord);
+            strToken = "";
         }
     }
 }
