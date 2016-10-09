@@ -13,7 +13,6 @@ function isLetter(char) {
 }
 
 function isDigit(char) {
-
     if (char >= 48 && char <= 57) {
         return true;
     }
@@ -31,7 +30,6 @@ function reserve(strToken, retainWord) {
             return 3;
         }
     }
-
     return 2;
 }
 
@@ -61,14 +59,14 @@ function main() {
                     strToken=strToken.concat(stringArray[i]);
                 }
             } else if (isDigit(char)) {
-                strToken.concat(stringArray[i]);
+                strToken=strToken.concat(stringArray[i]);
             } else if (char == 61) {
-                if ((strToken.length != 0 ) && (strToken.charAt(0) === '=')) {
-                    strToken.concat(stringArray[i]);
+                if ((strToken.length != 0 ) && (strToken.charAt(0) == '=')) {
+                    strToken=strToken.concat(stringArray[i]);
                     console.log("('" + 4 + "','" + strToken + "')");
                     strToken.replace(strToken, '');
                 } else {
-                    strToken.concat(stringArray[i]);
+                    strToken=strToken.concat(stringArray[i]);
                 }
             } else if (char == 43) {
                 retract(strToken, retainWord);
