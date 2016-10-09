@@ -49,60 +49,32 @@ function retract(strToken, retainWord) {
 function main() {
     let strToken = "";
     const retainWord = ["int", "if", "else", "return", "main", "void", "while", "break"];
-    let inputString = "int main(){int a = 1;int b = 2;int sum = a + b;}";
+    let inputString = "int main(){int a = 1;int b >= 2;int sum == a + b;}";
     const stringArray = inputString.split("");
     for (let i = 0; i < stringArray.length; i++) {
-        let char = stringArray[i].charCodeAt();
-        if (isBlank(char) == false) {
-            if (isLetter(char)) {
-                if (isLetter(char) == true || isDigit(char) == true){
-                    strToken=strToken.concat(stringArray[i]);
+        let unicode = stringArray[i].charCodeAt();
+        let char = stringArray[i];
+        if (isBlank(unicode) == false) {
+            if (isLetter(unicode)) {
+                if (isLetter(unicode) == true || isDigit(unicode) == true) {
+                    strToken = strToken.concat(char);
                 }
-            } else if (isDigit(char)) {
-                strToken=strToken.concat(stringArray[i]);
-            } else if (char == 61) {
+            } else if (isDigit(unicode)) {
+                strToken = strToken.concat(char);
+            } else if (unicode == 61) {
                 if ((strToken.length != 0 ) && (strToken.charAt(0) == '=')) {
-                    strToken=strToken.concat(stringArray[i]);
+                    strToken = strToken.concat(char);
                     console.log("('" + 4 + "','" + strToken + "')");
                     strToken.replace(strToken, '');
                 } else {
-                    strToken=strToken.concat(stringArray[i]);
+                    strToken = strToken.concat(char);
                 }
-            } else if (char == 43) {
+            } else if (unicode == 43 || unicode == 45 ||unicode == 42||unicode == 47) {
                 retract(strToken, retainWord);
-                console.log("('" + 4 + "','" + stringArray[i] + "')");
-            } else if (char == 45) {
+                console.log("('" + 4 + "','" + char + "')");
+            }  else if (char == ';'|| char == '(' ||char == ')'||char == '{'||char == '}'||char == ',') {
                 retract(strToken, retainWord);
-                console.log("('" + 4 + "','" + stringArray[i] + "')");
-            } else if (char == 42) {
-                retract(strToken, retainWord);
-                console.log("('" + 4 + "','" + stringArray[i] + "')");
-            } else if (char == 47) {
-                retract(strToken, retainWord);
-                console.log("('" + 4 + "','" + stringArray[i] + "')");
-            } else if (stringArray[i] == ';') {
-                retract(strToken, retainWord);
-                console.log("('" + 5 + "','" + stringArray[i] + "')");
-                strToken = "";
-            } else if (stringArray[i] == '(') {
-                retract(strToken, retainWord);
-                console.log("('" + 5 + "','" + stringArray[i] + "')");
-                strToken = "";
-            } else if (stringArray[i] == ')') {
-                retract(strToken, retainWord);
-                console.log("('" + 5 + "','" + stringArray[i] + "')");
-                strToken = "";
-            } else if (stringArray[i] == '{') {
-                retract(strToken, retainWord);
-                console.log("('" + 5 + "','" + stringArray[i] + "')");
-                strToken = "";
-            } else if (stringArray[i] == '}') {
-                retract(strToken, retainWord);
-                console.log("('" + 5 + "','" + stringArray[i] + "')");
-                strToken = "";
-            } else if (stringArray[i] == ',') {
-                retract(strToken, retainWord);
-                console.log("('" + 5 + "','" + stringArray[i] + "')");
+                console.log("('" + 5 + "','" + char + "')");
                 strToken = "";
             }
         } else {
