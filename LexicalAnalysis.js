@@ -69,10 +69,10 @@ function main() {
                 } else {
                     strToken = strToken.concat(char);
                 }
-            } else if (unicode == 43 || unicode == 45 ||unicode == 42||unicode == 47) {
+            } else if (unicode == 43 || unicode == 45 || unicode == 42 || unicode == 47) {
                 retract(strToken, retainWord);
                 console.log("('" + 4 + "','" + char + "')");
-            }  else if (char == ';'|| char == '(' ||char == ')'||char == '{'||char == '}'||char == ',') {
+            } else if (char == ';' || char == '(' || char == ')' || char == '{' || char == '}' || char == ',') {
                 retract(strToken, retainWord);
                 console.log("('" + 5 + "','" + char + "')");
                 strToken = "";
