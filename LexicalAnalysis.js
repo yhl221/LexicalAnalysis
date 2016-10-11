@@ -49,7 +49,7 @@ function retract(strToken, retainWord) {
 function main() {
     let strToken = "";
     const retainWord = ["int", "if", "else", "return", "main", "void", "while", "break"];
-    let inputString = "int main(){int a = 1;int b >= 2;int sum == a + b;}";
+    let inputString = "int main(){int a = 1;int b > 2;int sum == a + b;}";
     const stringArray = inputString.split("");
     for (let i = 0; i < stringArray.length; i++) {
         let unicode = stringArray[i].charCodeAt();
