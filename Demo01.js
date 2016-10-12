@@ -2,7 +2,7 @@
 let  variable = [];//变量名表
 let  number = [];//常数表
 let  retainPos; //关键字种别码
- let symbolPos; //界符种别码
+let symbolPos; //界符种别码
 function isBlank(char) {//判断是否是空格
     if (char == 32) {
         return true;
