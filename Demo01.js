@@ -99,7 +99,7 @@ function main() {
         "*=","/=","==","!=",">","<",">=","<=","(",
         ")","[","]","{","}",",",":",";"];
 
-    const inputString="int main ( ) { int a = 1 ; int b = 3 ; int sum = a + b ; } ";
+    const inputString="int main ( ) {  int a = 1 ; int b = 3 ; int sum = a + b ; } ";
     const stringArray = inputString.split("");
      for(let i=0;i<stringArray.length;i++){
          let unicode = stringArray[i].charCodeAt();
